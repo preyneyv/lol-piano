@@ -21,9 +21,9 @@ CHORDS = {
     'Q': chord(60),                     # C4 major
     'W': chord(62, is_major=False),     # D4 minor
     'E': chord(64, is_major=False),     # E4 minor
-    'R': chord(65) + [53],              # F4 major + F3
-    'D': octave(26),                    # D1 + D2
-    'F': octave(29),                    # F1 + F2
+    'R': chord(65),                     # F4 major
+    'D': octave(21),                    # A0 + A1
+    'F': octave(24),                    # C1 + C2
     'ctrlQ': octave(60),                # C4 + C5
     'ctrlW': octave(62),                # D4 + D5
     'ctrlE': octave(64),                # E4 + E5
@@ -181,17 +181,17 @@ def main(input_device, disable_output=False):
 
 if __name__ == '__main__':
     devices = mido.get_input_names()
-    print('Which MIDI input should be used? (1)')
-    for i, name in enumerate(devices, 1):
-        print(f"{i}) {name}")
-    while True:
-        try:
-            a = input('> ')
-            if not a:
-                a = '1'
-            choice = devices[int(a) - 1]
-            break
-        except:
-            print('Invalid choice!')
-    disable_output = input('Enable output? y/[n]').lower() != 'y'
-    main(choice, disable_output)
+    # print('Which MIDI input should be used? (1)')
+    # for i, name in enumerate(devices, 1):
+    #     print(f"{i}) {name}")
+    # while True:
+    #     try:
+    #         a = input('> ')
+    #         if not a:
+    #             a = '1'
+    #         choice = devices[int(a) - 1]
+    #         break
+    #     except:
+    #         print('Invalid choice!')
+    # disable_output = input('Enable output? y/[n]').lower() != 'y'
+    main(devices[0], True)
